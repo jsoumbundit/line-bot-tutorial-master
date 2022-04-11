@@ -205,37 +205,30 @@ def test_model():
     infenc.load_weights("model_enc.h5")
     infdec.load_weights("model_dec.h5")
 
-    # start prediction
-    while True:
+    input_data = "มาตราที่ 2"
+    input_data = preparingword([input_data])
+    input_data = padding_sequence(input_data, n_in)
+    input_data = word_index(input_data)
+    target = predict_sequence(infenc, infdec, input_data, n_out, encoded_length)
+    int_target = onehot_to_int(target)
+    ans = invert(int_target)
+    ans = ans.strip()
+    #print(ans)
 
-        input_data = input()
-        input_data = preparingword([input_data])
-        input_data = padding_sequence(input_data, n_in)
-        input_data = word_index(input_data)
-        target = predict_sequence(infenc, infdec, input_data, n_out, encoded_length)
-        int_target = onehot_to_int(target)
-        ans = invert(int_target)
-        ans = ans.strip()
-        #print(ans)
-
-        datafile = "text/message2.txt"
-        dataX = []
-        dataY = []
-        dataX, dataY = load_data(datafile)
-        i = 0
-        for i in range(len(dataX)):
-            if dataX[i] == ans:
-                print(dataY[i])
-        #for sentence in dataY:
-        #    print(sentence)
-    return 0
-
-
+    datafile = "text/message2.txt"
+    dataX = []
+    dataY = []
+    dataX, dataY = load_data(datafile)
+    i = 0
+    for i in range(len(dataX)):
+        if dataX[i] == ans:
+            print(dataY[i])
+    #for sentence in dataY:
+    #    print(sentence)
 
 
 def onehot_to_int(inputvector):
     return np.argmax(inputvector, axis=1)
-
 
 def invert(inputlist):
     sentence = []
@@ -243,10 +236,8 @@ def invert(inputlist):
         sentence.append(idx2word(w))
     return "".join(sentence).replace("ว่างเปล่า", " ")
 
-
 def idx2word(w):
     return wv_model.wv.index_to_key[w]
-
 
 # generate target given source sequence
 def predict_sequence(infenc, infdec, source, n_steps, cardinality):
