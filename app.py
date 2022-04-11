@@ -1,4 +1,5 @@
 from flask import Flask, request, abort
+import os
 # Machine Learning code
 from pythainlp.tokenize import word_tokenize
 from pythainlp.util import *
@@ -15,7 +16,22 @@ from tensorflow.keras.layers import Dense
 from tensorflow.keras import Model
 from tensorflow.keras import Input
 
-import os
+wv_model = Word2Vec.load('corpus.th.model')
+word_list = wv_model.wv.index_to_key
+
+
+def load_data(datafile):
+    dataX = []
+    dataY = []
+    data = open(datafile, "r").read().lower()
+    for i in data.split("\n\n"):
+        a = i.split("\n")
+        question = a[0]
+        answer = a[1]
+        dataX.append(question)
+        dataY.append(answer)
+    return dataX, dataY
+
 
 #line bot connection code
 from linebot import (
