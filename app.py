@@ -1,22 +1,5 @@
 from flask import Flask, request, abort
-import os
-# Machine Learning code
-from pythainlp.tokenize import word_tokenize
-from pythainlp.util import *
-import numpy as np
-from numpy import array
-from gensim.models import Word2Vec
-import difflib
-from tensorflow import keras
-from tensorflow.keras.utils import to_categorical
-from tensorflow.keras.layers import Embedding
-from tensorflow.keras.layers import LSTM
-from tensorflow.keras.layers import TimeDistributed
-from tensorflow.keras.layers import Dense
-from tensorflow.keras import Model
-from tensorflow.keras import Input
 
-#line bot connection code
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -54,6 +37,7 @@ def handle_message(event):
     line_bot_api.reply_message(event.reply_token, message)
 
 
+import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
