@@ -8,6 +8,15 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+from pythainlp.tokenize import word_tokenize
+from pythainlp.util import *
+import numpy as np
+from numpy import array
+from gensim.models import Word2Vec
+import difflib
+
+
+
 app = Flask(__name__)
 
 # Channel Access Token
@@ -35,6 +44,9 @@ def handle_message(event):
     msg_from_user = event.message.text
     message = TextSendMessage(msg_from_user)
     line_bot_api.reply_message(event.reply_token, message)
+
+wv_model = Word2Vec.load('corpus.th.model')
+word_list = wv_model.wv.index_to_key
 
 
 def load_data(datafile):
