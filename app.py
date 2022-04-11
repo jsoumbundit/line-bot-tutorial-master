@@ -72,4 +72,4 @@ def load_data(datafile):
         answer = a[1]
         dataX.append(question)
         dataY.append(answer)
-    return dataX, dataY
+
