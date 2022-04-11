@@ -37,6 +37,20 @@ def handle_message(event):
     line_bot_api.reply_message(event.reply_token, message)
 
 
+def load_data(datafile):
+    dataX = []
+    dataY = []
+    data = open(datafile, "r").read().lower()
+    for i in data.split("\n\n"):
+        a = i.split("\n")
+        question = a[0]
+        answer = a[1]
+        dataX.append(question)
+        dataY.append(answer)
+    return dataX, dataY
+
+
+
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
