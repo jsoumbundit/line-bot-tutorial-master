@@ -16,8 +16,8 @@ from tensorflow.keras.layers import Dense
 from tensorflow.keras import Model
 from tensorflow.keras import Input
 
-wv_model = Word2Vec.load('corpus.th.model')
-word_list = wv_model.wv.index_to_key
+#wv_model = Word2Vec.load('corpus.th.model')
+#word_list = wv_model.wv.index_to_key
 
 
 def load_data(datafile):
