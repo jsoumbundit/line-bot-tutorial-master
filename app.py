@@ -1,4 +1,20 @@
 from flask import Flask, request, abort
+# Machine Learning code
+from pythainlp.tokenize import word_tokenize
+from pythainlp.util import *
+import numpy as np
+from numpy import array
+from gensim.models import Word2Vec
+import difflib
+from tensorflow import keras
+from tensorflow.keras.utils import to_categorical
+from tensorflow.keras.layers import Embedding
+from tensorflow.keras.layers import LSTM
+from tensorflow.keras.layers import TimeDistributed
+from tensorflow.keras.layers import Dense
+from tensorflow.keras import Model
+from tensorflow.keras import Input
+
 import os
 
 #line bot connection code
