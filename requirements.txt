@@ -1,7 +1,6 @@
 line-bot-sdk
 flask~=2.0.3
 pip~=21.2.4
-zlib~=1.2.11
 wheel~=0.37.1
 cryptography~=36.0.0
 setuptools~=58.0.4
