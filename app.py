@@ -57,19 +57,3 @@ def handle_message(event):
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
-
-
-wv_model = Word2Vec.load('corpus.th.model')
-word_list = wv_model.wv.index_to_key
-
-def load_data(datafile):
-    dataX = []
-    dataY = []
-    data = open(datafile, "r").read().lower()
-    for i in data.split("\n\n"):
-        a = i.split("\n")
-        question = a[0]
-        answer = a[1]
-        dataX.append(question)
-        dataY.append(answer)
-
