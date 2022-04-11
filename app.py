@@ -1,4 +1,5 @@
 from flask import Flask, request, abort
+import os
 
 # Machine Learning code
 from pythainlp.tokenize import word_tokenize
@@ -15,7 +16,7 @@ from tensorflow.keras.layers import TimeDistributed
 from tensorflow.keras.layers import Dense
 from tensorflow.keras import Model
 from tensorflow.keras import Input
-import os
+
 
 wv_model = Word2Vec.load('corpus.th.model')
 word_list = wv_model.wv.index_to_key
