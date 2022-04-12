@@ -1,6 +1,5 @@
 from flask import Flask, request, abort
 
-
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -36,8 +35,6 @@ def handle_message(event):
     msg_from_user = event.message.text
     message = TextSendMessage(msg_from_user)
     line_bot_api.reply_message(event.reply_token, message)
-
-
 
 import os
 if __name__ == "__main__":
