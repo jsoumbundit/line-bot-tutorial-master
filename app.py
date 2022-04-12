@@ -1,9 +1,5 @@
 from flask import Flask, request, abort
-from pythainlp.tokenize import word_tokenize
-from pythainlp.util import *
-import numpy as np
-from numpy import array
-from gensim.models import Word2Vec
+
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -41,8 +37,7 @@ def handle_message(event):
     message = TextSendMessage(msg_from_user)
     line_bot_api.reply_message(event.reply_token, message)
 
-wv_model = Word2Vec.load('corpus.th.model')
-word_list = wv_model.wv.index_to_key
+
 
 import os
 if __name__ == "__main__":
