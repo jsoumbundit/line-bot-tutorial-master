@@ -1,4 +1,9 @@
 from flask import Flask, request, abort
+from pythainlp.tokenize import word_tokenize
+from pythainlp.util import *
+import numpy as np
+from numpy import array
+from gensim.models import Word2Vec
 
 from linebot import (
     LineBotApi, WebhookHandler
