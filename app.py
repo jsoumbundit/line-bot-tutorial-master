@@ -36,6 +36,8 @@ def handle_message(event):
     message = TextSendMessage(msg_from_user)
     line_bot_api.reply_message(event.reply_token, message)
 
+wv_model = Word2Vec.load('corpus.th.model')
+word_list = wv_model.wv.index_to_key
 
 import os
 if __name__ == "__main__":
